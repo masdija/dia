@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    <title>Pregled naloga</title>
+</head>
+<body>
+<h1>Spisak izdatih radnih naloga</h1>
+
+
+
+<table style="margin-left: 20px;">
+<!-- Table headers -->
+<th>
+ <tr style="color: black; ">
+
+<th>Broj naloga</th>
+<th>Dijagnosticka grupa</th>
+<th>Sistem</th>
+<th>Objekat</th>
+<th>Masina</th>
+<th>Vrsta posla</th>
+<th>Vreme posla</th>
+<th>Nalog izdao</th>
+<th>Datum izdavanja</th>
+<th>Nalog realizovao</th>
+  
+  
+</tr>
+</th>
+{%for order in query%}
+<tr>
+<td>
+{{order.order_number}}
+ </td>
+ <td>
+{{order.group}}
+</td>
+<td>
+{{order.system}}
+</td>
+ 
+<td>
+{{order.obiject}}
+</td>
+ <td>
+ {{order.machine}}
+ </td>
+ 
+ <td>
+ {{order.sort}}
+ </td>
+<td>
+{{order.tiype}}
+</td>
+
+ 
+<td>
+   {{order.orderer}}
+</td>
+<td>
+{{order.date}}
+</td>
+<td>
+{{order.reliser}}
+</td>
+
+   
+</tr>
+ {%endfor%}
+ </table>
+
+                                                                                            
+</body>
+</html>
+
+

@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    <title>Pregled naloga</title>
+</head>
+<body>
+<h1>Pregled izdatih radnih naloga</h1>
+ {% if entrys == []: %}
+        <p>Nema unosa u bazu vibrodijagnostičkih izveštaja.</p>
+        {% endif %}
+    <ul>
+        {% for entry in entrys %}            
+        <li>            
+        {{entry.order_number}} - {{entry.group}} - 
+        {{entry.system}} - {{entry.obiject}} - {{entry.machine}} - 
+        {{entry.tiype}} - {{entry.sort}} - {{entry.orderer}} - 
+        {{entry.date}} - {{entry.reliser}}
+        </li>
+        {% endfor %}
+    </ul>
+
+                                                        
+<li><a href="{{ url_for('add') }}">Novi radni nalog</a></li>                                                                                                    
+<li><a href="{{ url_for('show_permanent') }}">Pregled baze radnih naloga</a></li>
+
+
+</select>
+</body>
+</html>
+
+
