@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    
+    <title>Search</title>
+</head>
+<body>
+
+<form action="/search" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="live-search-box"
+                   placeholder="Pretraga naloga po grupi poslova" name="search_grupe_tipa" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+     
+     
+<form action="/search2" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="form-control py-2"
+                   placeholder="Pretraga naloga po broju naloga" name="search_brojnaloga_tipa" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+    </div>
+</form>
+    
+     
+     
+        
+{% if query == []: %}
+<p>Nema radnih naloga po trazenom kriterijumu grupe.</p>
+{% endif %}
+<ul>
+{% for qu in query %}            
+
+
+
+<h2>Pregled radnih naloga po dijagnostickoj grupi {{qu[2]}} </h2>
+  
+<h2>
+<ul><label>Radni nalog broj: {{qu[1]}}  </label></ul>
+</h2>
+       
+<ul><label>Broj naloga</label></ul>
+<input name="order_number"  type="text" value="{{qu[1]}}">
+
+<ul><label for="grupa">Radna grupa</label> </ul>
+<input name="order_number"  type="text" value="{{qu[2]}}">
+
+<ul><label for="sort">Vrsta posla</label> </ul>
+<input name="order_number"  type="text" value="{{qu[3]}}">
+
+<ul><label for="tip">Periodičnost posla</label> </ul>
+<input name="order_number"  type="text" value="{{qu[4]}}">
+
+<ul><label for="sistem">Sistem</label></ul>
+<input name="order_number"  type="text" value="{{qu[5]}}">
+
+<ul><label for="objekat">Objekat</label></ul>
+<input name="order_number"  type="text" value="{{qu[6]}}">
+
+<ul><label for="location">Lokacija pogona</label></ul>
+<input name="order_number"  type="text" value="{{qu[7]}}">
+
+<ul><label for="position">Pozicija pogona</label></ul>
+<input name="order_number"  type="text" value="{{qu[8]}}">
+
+<ul><label for="machine">Mašina</label></ul>
+<input name="order_number"  type="text" value="{{qu[9]}}">
+
+<ul><label for="orderer" >Nalog izdao</label> </ul>
+<input name="order_number"  type="text"  value="{{qu[10]}}">
+
+<ul><label>Datum</label></ul>
+<input name="order_number"  type="text" value="{{qu[11]}}">
+
+
+<ul><label for="coment">Komentar naloga</label> </ul>
+<input name="order_number"  type="text" value="{{qu[12]}}">
+
+<ul><label for="reliser">Nalog primio</label> </ul>
+<input name="order_number"  type="text" value="{{qu[13]}}">
+
+
+<br></br> 
+{% endfor %}
+        
+    </div>
+    
+</form>
+
+<form action="/search2" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="form-control py-2"
+                   placeholder="Pretraga naloga po broju naloga" name="search_brojnaloga_tipa" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
+</body>
+
+
+<button type="button" onclick="window.location.href='{{ url_for('home')}}';">Početna</button>
+<button type="button" onclick="window.location.href='{{ url_for('show_permanent')}}';">Baza radnih naloga</button>
+<button type="button" onclick="window.location.href='{{ url_for('search')}}';">Pridruzi izvestaj</button>
+
+
+
+
+
+
+</html>
+
+
+
