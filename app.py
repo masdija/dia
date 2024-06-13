@@ -1,15 +1,12 @@
 from werkzeug.utils import secure_filename
-
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
-
 from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory, Response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from datetime import datetime
 import psycopg2
-
 
 #Kreira postgre bazu podataka u slucaju da ista ne postoji:
     
@@ -20,18 +17,9 @@ db_name = 'diadb'
 engine = create_engine('postgresql://{}:{}@{}/{}'.format(db_user,db_pass,db_ip,db_name))
 if not database_exists(engine.url): create_database(engine.url)
 
-
-
 app = Flask(__name__)
 
-
 app.secret_key = 'your secret key'
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'koren'
-# app.config['MYSQL_DB'] = 'diaDB'
-##app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:koren@localhost/diaDB'
-
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://postgres:123@localhost:5432/diadb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -50,13 +38,8 @@ login_manager.init_app(app)
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
-
-
-
 all_entrys = []
 all_entrys1 = []
-
-
 
 current_year = datetime.now().year
 
