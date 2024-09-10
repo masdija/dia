@@ -1,0 +1,79 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>   
+    <link rel="stylesheet" type="text/css" 
+    href="{{ url_for('static', filename='style.css')}}"/>    
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Diagnostika</title>
+      
+    
+</head>
+
+    <body>
+<center>    
+    <h1><img src={{ url_for('static', filename='main_logo.png') }}>Izvestaji i radni nalozi</h1>
+    
+    
+</center>
+
+<h5>Radni nalozi tehnicke dijagnostike</h5>
+        <ul>         
+        <li><a href="{{ url_for('add') }}">Izdavanje radnog naloga</a></li>
+        <li><a href="{{ url_for('show') }}">Pregled radni nalozi</a></li>
+        <li><a href="{{ url_for('show_permanent') }}">Pregled baze radnih naloga</a></li>
+        <li><a href="{{ url_for('show_add') }}">Prikaz naloga na formi iz baze</a></li>
+        <li><a href="{{ url_for('search2') }}">Pretraga baze radnih naloga</a></li>
+        <li><a href="{{ url_for('search2') }}">Izmena i brisanje radnog naloga</a></li>
+        <li><a href="{{ url_for('print_order') }}">Stampa radnog naloga</a></li>
+        </ul> 
+ 
+<h5>Izvestaji tehnicke dijagnostike</h5>      
+        <ul> 
+        <li><a href="{{ url_for('add_report') }}">Kreiranje izvestaja</a></li>  
+        <li><a href="{{ url_for('show_report') }}">Pregled izvestaja</a></li>  
+        <li><a href="{{ url_for('show_permanent_report') }}">Pregled baze izvestaja</a></li>
+        <li><a href="{{ url_for('search2_reports') }}">Prikaz izvestaja na formi</a></li>
+        <li><a href="{{ url_for('search2_reports') }}">Pretraga izvestaja</a></li>
+        <li><a href="{{ url_for('search2_reports') }}">Izmena i brisanje naloga</a></li>      
+        <li><a href="{{ url_for('print_report') }}">Stampa izvestaja</a></li>
+        
+        
+        </ul>
+         
+        <ul>  
+        <li><a href="{{ url_for('search2') }}">Pretraga naloga i kreiranje izvestaja</a></li>
+        </ul>   
+       
+        <ul>
+        <li><a href="{{ url_for('forum') }}">Forum</a></li>
+        </ul>
+   
+</body>
+
+<footer>
+
+    <script type="text/javascript">  
+        function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+        }
+    
+        function display_ct() {
+        var x = new Date()
+        document.getElementById('ct').innerHTML = x;
+        display_c();
+         }
+    </script>
+
+
+<p style=" position: relative; bottom: 0; left: 0; width: 100%; text-align: center;">
+	<body onload=display_ct();>
+    <span id='ct' ></span> | &#174; by Zobla, {{year}} 
+</footer>
+</html>

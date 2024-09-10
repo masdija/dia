@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    <title>Pregled izvestaja</title>
+</head>
+<body>
+<h1>Pregled trenutno izradjenih izvestaja</h1>
+ {% if entrys == []: %}
+        <p>Nema trenutnih unosa izvestaja.</p>
+        {% endif %}
+    <ul>
+        {% for entry in entrys %}            
+        <li>            
+        {{entry.report_number}} - {{entry.grupa}} - 
+        {{entry.sistem}} - {{entry.objekat}} - 
+        {{entry.lokacija}} -{{entry.pozicija}} - 
+        {{entry.machine}} - {{entry.tip}} - 
+        {{entry.sort}} - {{entry.orderer}} - 
+        {{entry.datum}} - {{entry.reliser}} - 
+        {{entry.coment}} - {{entry.report}} -
+        {{entry.conclude}} - {{entry.comentr}}
+        </li>
+        {% endfor %}
+    </ul>
+
+                                                        
+<li><a href="{{ url_for('add_report') }}">Novi izvestaj</a></li>  
+                                                                 
+<li><a href="{{ url_for('show_permanent_report') }}">Pregled baze izvestaja</a></li>
+<a href="{{ url_for('home') }}">home</a>
+
+</select>
+</body>
+</html>
+
+

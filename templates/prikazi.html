@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>
+    <meta charset="UTF-8">
+    <title>Unos</title>
+    
+</head>
+<center>
+<body>
+    <form action="{{ url_for('prikazi') }}" method="POST">
+
+<h1>
+<ul><label>Prikaz naloga u formi naloga </label></ul>
+</h1>
+       
+<ul><label>Broj naloga</label></ul>
+
+
+<ul><label for="grupa">Radna grupa</label> </ul>
+
+<ul><label for="sistem">Sistem</label></ul>
+
+<ul><label for="objekat">Objekat</label></ul>
+
+
+
+<ul><label for="machine">Mašina</label></ul>
+
+<ul><label for="sort">Tip posla</label> </ul>
+
+<ul><label for="tip">Vrsta posla</label> </ul>
+
+<ul><label for="orderer">Nalog izdao</label> </ul>
+
+
+<ul><label>Datum</label></ul>
+
+
+<ul><label for="reliser">Nalog realizovao</label> </ul>
+
+
+
+
+
+</form>
+
+<br></br>
+
+<button type="button" onclick="window.location.href='{{ url_for('show_permanent')}}';">Baza radnih naloga</button>
+<button type="button" onclick="window.location.href='{{ url_for('home')}}';">Početna</button>
+
+</body>
+</center>
+</html>

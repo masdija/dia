@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    <title>Pregled naloga</title>
+</head>
+<body>
+<h1>Pregled baze izveštaja službe mašinske dijagnostike</h1>
+{% if query%}
+Ukupan broj izveštaja službe mašinske dijagnostike: {{ query | length }}
+{% else %}
+<p>Nema izveštaja u bazi podataka</p>
+{% endif %}
+
+
+<ul><button type="button" onclick="window.location.href='{{ url_for('search2')}}';">Kreiraj novi izvestaj</button></ul>
+
+<ul><button type="button" onclick="window.location.href='{{ url_for('search2_reports')}}';">Pretraga</button></ul>
+
+
+
+
+
+<table style="margin-left: 20px;">
+<!-- Table headers -->
+<th>
+ <tr style="color: black; ">
+
+<th>Broj naloga</th>
+<th>Radna grupa</th>
+<th>Tip posla</th>
+<th>Periodičnost posla</th>
+<th>Sistem</th>
+<th>Objekat</th>
+<th>Lokacija</th>
+<th>Pozicija</th>
+<th>Masina</th>
+<th>Nalog izdao</th>
+<th>Komentar idatog radnog naloga</th>
+<th>Datum izdavanja naloga</th>
+<th>Nalog primio</th> 
+<th>Zatečeno stanje</th> 
+<th>Zaključak izveštaja</th> 
+<th>Komentar izveštaja</th> 
+<th>Datum izveštaja</th> 
+  
+
+  
+
+  
+  
+</tr>
+</th>
+{%for order in query%}
+<tr>
+<td>
+{{order.report_number}}
+ </td>
+ <td>
+{{order.grupa}}
+</td>
+
+
+
+
+ <td>
+ {{order.sort}}
+ </td>
+<td>
+{{order.tip}}
+</td>
+
+
+
+
+<td>
+{{order.sistem}}
+</td>
+ 
+<td>
+{{order.objekat}}
+
+</td>
+
+
+
+<td>
+{{order.location}}
+
+</td>
+ <td>
+ {{order.position}}
+ </td>
+ <td>
+ {{order.machine}}
+ </td>
+ 
+
+
+ 
+<td>
+   {{order.orderer}}
+</td>
+
+
+<td>
+   {{order.coment}}
+</td>
+<td>
+{{order.datum}}
+</td>
+<td>
+{{order.reliser}}
+</td>
+
+
+
+ <td>
+{{order.report}}
+</td>
+
+ <td>
+{{order.conclude}}
+</td>
+
+ <td>
+{{order.comentr}}
+</td>
+
+ <td>
+{{order.datumvreme}}
+</td>
+   
+</tr>
+ {%endfor%}
+ </table>
+
+<br></br> 
+
+<button type="button" onclick="window.location.href='{{ url_for('home')}}';">Početna</button>
+                                                                                   
+</body>
+</html>
+
+

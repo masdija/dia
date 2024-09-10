@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    <title>Baza podataka naloga</title>
+</head>
+<body>
+<h1>Pregled baze podataka izdatih radnih naloga</h1>
+{% if query%}
+Ukupan broj izdatih radnih naloga je: {{ query | length }}
+{% else %}
+<p>Nema naloga u bazi in db</p>
+{% endif %}
+
+
+<button type="button" onclick="window.location.href='{{ url_for('add')}}';">Novi radni nalog</button>
+<button type="button" onclick="window.location.href='{{ url_for('search2')}}';">Pretraga baze radnih naloga</button>
+
+<form action="/search" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="form-control py-2"
+                   placeholder="Pretraga naloga po grupi poslova" name="search_grupe_tipa" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+    </div>
+</form>
+
+<form action="/search2" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="form-control py-2"
+                   placeholder="Pretraga naloga po broju naloga" name="search_brojnaloga_tipa" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+    </div>
+</form>
+
+<table border="1">
+<!-- Table headers -->
+<th>
+<tr style="color: black; ">
+<th>Broj naloga</th>
+<th>Radna grupa</th>
+<th>Vrsta posla</th>
+<th>Periodičnost posla</th>
+<th>Sistem</th>
+<th>Objekat</th>
+<th>Lokacija</th>
+<th>Pozicija</th>
+<th>Masina</th>
+<th>Nalog izdao</th>
+<th>Komentar izdatog radnog naloga</th>
+<th>Datum izdatog radnog naloga</th>
+<th>Nalog primio</th> 
+</tr>
+</th>
+
+{%for order in query%}
+<tr>
+<td>{{order.order_number}}</td>
+<td>{{order.grupa}}</td>
+<td>{{order.sort}}</td>
+<td>{{order.tip}}</td>
+<td>{{order.sistem}}</td>
+<td>{{order.objekat}}</td>
+<td>{{order.location}}</td>
+<td>{{order.position}}</td>
+<td>{{order.machine}}</td>
+<td>{{order.orderer}}</td>
+<td>{{order.coment}}</td>
+<td>{{order.datum}}</td>
+<td>{{order.reliser}}</td>
+<td>
+			
+<form action="/update" method="post"> 
+<input type="hidden" name="id" value="{{ order.id }}"> 
+<ul><label for="order_numbertip">Izmeni broj naloga</label> </ul>
+<input type="text" name="order_number" value="{{ order.order_number }}">
+<ul><label for="grupa">Izmeni grupu poslova</label> </ul>
+<input type="text" name="grupa" value="{{ order.grupa }}">
+<ul><label for="sort">Izmeni vrstu posla</label> </ul>  
+<input type="text" name="sort" value="{{ order.sort }}">
+<ul><label for="tip">Izmeni periodicnost posla posla</label> </ul>
+<input type="text" name="tip" value="{{ order.tip}}"> 
+<ul><label for="sistem">Izmeni sistem</label> </ul>
+<input type="text" name="sistem" value="{{ order.sistem }}">  
+<ul><label for="objekat">Izmeni objekat</label> </ul>
+<input type="text" name="objekat" value="{{ order.objekat }}">
+<ul><label for="location">Izmeni lokaciju</label> </ul>
+<input type="text" name="location" value="{{ order.location }}">
+<ul><label for="position">Izmeni poziciju</label> </ul>  
+<input type="text" name="position" value="{{ order.position }}">
+<ul><label for="machine">Izmeni masinu</label> </ul>
+<input type="text" name="machine" value="{{ order.machine }}">
+<ul><label for="orderer">Izmeni nalogodavca</label> </ul>  
+<input type="text" name="orderer" value="{{ order.orderer }}">
+<ul><label for="coment">Izmeni komentar</label> </ul>
+<input type="text" name="coment" value="{{ order.coment }}"> 
+<ul><label for="datum">Izmeni datum</label> </ul> 
+<input type="text" name="datum" value="{{ order.datum }}">
+<ul><label for="reliser">Izmeni primaoca naloga</label> </ul>
+<input type="text" name="reliser" value="{{ order.reliser }}">  
+<input type="submit" value="Update"> 
+</form> 
+			
+			
+<form action="/delete" method="post"> 
+<input type="hidden" name="id" value="{{ order.id }}"> 
+<input type="submit" value="Delete"> 
+</form> 
+			
+			
+			
+</td>
+
+
+</tr>
+{%endfor%}
+</table>
+
+<button type="button" onclick="window.location.href='{{ url_for('home')}}';">Početna</button>
+                                                                                   
+</body>
+</html>
+
+

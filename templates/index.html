@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>   
+<!--    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/styles.css')}}/>    -->
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Diagnostika</title>
+      
+    
+</head>
+<center>
+    <body>
+    <br></br>
+    <h1>Mašinska dijagnostika</h1>
+    <br></br>
+    <img src={{ url_for('static', filename='main_logo.png') }}>
+    <br></br>
+    <h5>Pojam dijagnostike, odnosno dijagnoze, javio se najpre u medicinskim naukama gde ima široko značenje. 
+    Potiče od grčke reči prepoznavanje (zaključivanje) i (pr)ocenjivanje.</h5>
+    
+    <h5>Pod ovim pojmom danas treba podrazumevati sve aktivnosti koje se sprovode sa ciljem ocene trenutnog tehničkog stanja sistema 
+    (sa rastavljanjem i bez rastavljanja) radi preduzimanja planiranih aktivnosti održavanja ili davanja prognoze tehničkog stanja sistema u budućnosti.</h5>
+    <h5>Tehnička dijagnostika, kao sastavni deo procesa održavanja prema stanju, treba da utvrdi tehničko stanje sastavnog dela sistema sa odrđenom tačnošću u odredjenom trenutku vremena.
+    Drugim rečima, to je zapravo nauka koja se bavi prepoznavanjem stanja sistema.
+    </h5>
+    <br></br>
+    
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-block btn-large">Prijava</a>
+        <a href="{{ url_for('register') }}" class="btn btn-secondary btn-block btn-large">Registracija</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary btn-block btn-large">Odjava</a>
+        <br></br>
+        			<a href="facebook/">
+            		<img id="facebook"
+            			src="https://img.shields.io/badge/Facebook-Connect-brightgreen?style=for-the-badge&labelColor=black&logo=facebook"
+            			alt="Facebook"> <br>
+            		</a>
+        <br></br>
+</body>
+</center>
+
+
+
+<footer>
+
+    <script type="text/javascript">  
+        function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+        }
+    
+        function display_ct() {
+        var x = new Date()
+        document.getElementById('ct').innerHTML = x;
+        display_c();
+         }
+    </script>
+
+
+<p style=" position: relative; bottom: 0; left: 0; width: 100%; text-align: center;">
+	<body onload=display_ct();>
+    <span id='ct' ></span> | &#174; by Zobla, {{year}} 
+    
+</footer>
+</html>

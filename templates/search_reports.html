@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>  
+    <meta charset="UTF-8">
+    
+    <title>Search</title>
+</head>
+<center>
+<body>
+<form action="/search_reports" method="POST">
+    <div class="mb-5 d-flex position-relative">
+        <!-- Search -->
+        <div class="input-group w-70 mx-auto">
+            <input class="form-control py-2"
+                   placeholder="Pretraga izvestaja po grupi poslova" name="search_grupe_izvestaja" value="" autocomplete="on"/>
+            <button type="submit" class="btn btn-secondary text-muted">Pretraga
+            </button>
+        </div>
+    </div>
+</form>
+     
+     
+ <form action="/search2_reports" method="POST">
+     <div class="mb-5 d-flex position-relative">
+         <!-- Search -->
+         <div class="input-group w-70 mx-auto">
+             <input class="form-control py-2"
+                    placeholder="Pretraga izvestaja po broju" name="search_broj_izvestaja" value="" autocomplete="on"/>
+             <button type="submit" class="btn btn-secondary text-muted">Pretraga
+             </button>
+         </div>
+     </div>
+ </form>      
+     
+{% if query == []: %}
+<p>Nema izvestaja po trazenom kriterijumu grupe.</p>
+{% endif %}
+<ul>
+{% for qu in query %}            
+
+     
+
+
+  
+<h1>
+<ul><label>Izvestaj sluzbe masinske dijagnostike broj: {{qu[1]}}  </label></ul>
+</h1>
+       
+<ul><label>Broj izvestaja</label></ul>
+<input name="report_number"  type="text" value="{{qu[1]}}">
+
+<ul><label for="grupa">Radna grupa</label> </ul>
+<input name="grupa"  type="text" value="{{qu[2]}}">
+
+<ul><label for="sort">Vrsta posla</label> </ul>
+<input name="sort"  type="text" value="{{qu[3]}}">
+
+<ul><label for="tip">Periodičnost posla</label> </ul>
+<input name="tip"  type="text" value="{{qu[4]}}">
+
+<ul><label for="sistem">Sistem</label></ul>
+<input name="sistem"  type="text" value="{{qu[5]}}">
+
+<ul><label for="objekat">Objekat</label></ul>
+<input name="objekat"  type="text" value="{{qu[6]}}">
+
+<ul><label for="location">Lokacija pogona</label></ul>
+<input name="location"  type="text" value="{{qu[7]}}">
+
+<ul><label for="position">Pozicija pogona</label></ul>
+<input name="position"  type="text" value="{{qu[8]}}">
+
+<ul><label for="machine">Mašina</label></ul>
+<input name="machine"  type="text" value="{{qu[9]}}">
+
+<ul><label for="orderer" >Nalog izdao</label> </ul>
+<input name="orderer"  type="text"  value="{{qu[10]}}">
+
+<ul><label>Datum</label></ul>
+<input name="datum"  type="text" value="{{qu[11]}}">
+
+
+<ul><label for="coment">Komentar naloga</label> </ul>
+<input name="order_number"  type="text" value="{{qu[12]}}">
+
+<ul><label for="reliser">Nalog primio</label> </ul>
+<input name="reliser"  type="text" value="{{qu[13]}}">
+
+
+<ul><label for="report">Zakljucak</label> </ul>
+<input name="report"  type="text" value="{{qu[13]}}">
+
+
+<ul><label for="conclude">Zakljucak</label> </ul>
+<input name="conclude"  type="text" value="{{qu[14]}}">
+
+<ul><label for="comentr">Komentar</label> </ul>
+<input name="comentr"  type="text" value="{{qu[15]}}">
+
+
+
+   <br></br> 
+{% endfor %}
+     
+    </div>
+    
+ </form>
+  <br></br> 
+ <form action="/search2_reports" method="POST">
+     <div class="mb-5 d-flex position-relative">
+         <!-- Search -->
+         <div class="input-group w-70 mx-auto">
+             <input class="form-control py-2"
+                    placeholder="Pretraga izvestaja po broju" name="search_broj_izvestaja" value="" autocomplete="on"/>
+             <button type="submit" class="btn btn-secondary text-muted">Pretraga
+             </button>
+         </div>
+     </div>
+ </form>    
+
+   <br></br> 
+
+</body>
+
+
+
+<button type="button" onclick="window.location.href='{{ url_for('home')}}';">Početna</button>
+<button type="button" onclick="window.location.href='{{ url_for('show_permanent_report')}}';">Baza izvestaja</button>
+<button type="button" onclick="window.location.href='{{ url_for('search')}}';">Pridruzi izvestaj</button>
+
+
+</center>
+
+
+
+
+</html>
+
+
+
